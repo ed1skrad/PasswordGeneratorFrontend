@@ -1,5 +1,8 @@
 body {
     color: #FFF;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 .pass-block {
@@ -29,7 +32,7 @@ span {
     padding-right: 1em;
 }
 
-button{
+button {
     color: #FFF;
     background: rgba(255, 255, 255, 0.29);
     border-radius: 8px;
@@ -37,10 +40,10 @@ button{
     backdrop-filter: blur(6.6px);
     -webkit-backdrop-filter: blur(6.6px);
     border: none;
+    cursor: pointer;
 }
 
 .button-main {
-
     height: 2em;
     font-size: 1em;
     font-weight: bold;
@@ -48,19 +51,46 @@ button{
     margin-left: 0;
 }
 
-button:hover{
+button:hover {
     background: rgba(255, 255, 255, 0.5);
 }
 
-.delAll-button{
+.delAll-button {
     font-size: large;
 }
 
-input{
+input {
     height: 2em;
     background: rgba(255, 255, 255, 0.29);
     border-radius: 8px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.6px);
     color: white;
+    padding-left: 10px;
+}
+
+.admin-panel {
+    position: relative;
+    padding: 1em;
+}
+
+.user-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.user-container span {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.user-container .button-main {
+    margin: 0;
 }

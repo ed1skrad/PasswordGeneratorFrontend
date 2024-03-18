@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../../css/LoginForm/loginForm.css';
 import API_URL from "../../config/config";
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -15,7 +17,8 @@ const LoginForm = () => {
                 password,
             });
             localStorage.setItem('token', response.data.token);
-            window.location.href = '/password';
+            localStorage.setItem('username', response.data.username);
+            navigate('/password');
         } catch (error) {
             console.error('Failed to login: ', error);
         }

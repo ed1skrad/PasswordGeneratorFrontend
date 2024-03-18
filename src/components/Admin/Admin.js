@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../css/AdminPanel/adminPanel.css';
 import API_URL from "../../config/config";
+import { useNavigate } from 'react-router-dom';
 
 const AdminPanel = () => {
     const [passwords, setPasswords] = useState([]);
     const [username, setUsername] = useState('');
+    const [currentUsername, setCurrentUsername] = useState('');
     const [displayMode, setDisplayMode] = useState('all');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+            setCurrentUsername(storedUsername);
+        }
+    }, []);
 
     const handleGetAllPasswords = () => {
         axios.get(`${API_URL}/api/password/all`)
@@ -93,14 +103,24 @@ const AdminPanel = () => {
         }
     }
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        navigate('/login');
+    };
+
     return (
-        <div>
-            <div>
+        <div className="admin-panel">
+            <div className="user-container">
+                <span>Current User: {currentUsername}</span>
+                <button onClick={handleLogout} className='button-main'>Logout</button>
+            </div>
+            <div className="buttons-container">
                 <button onClick={handleDisplayAllPasswords} className='button-main'>Display All Passwords</button>
                 <button onClick={handleDisplayUserPasswords} className='button-main'>Display User Passwords</button>
                 <button onClick={handleDisplayAllUsers} className='button-main'>Display All Users</button>
                 {displayMode === 'user' && (
-                    <input type="text" value={username} onChange={handleChangeUsername} />
+                    <input type="text" value={username} onChange={handleChangeUsername}/>
                 )}
             </div>
             <div className="list-container">
@@ -119,7 +139,7 @@ const AdminPanel = () => {
                     ))
                 )}
             </div>
-            <button onClick={deleteAll} className='button-main'>Delete All</button>
+            <button onClick={deleteAll} className='button-main delAll-button'>Delete All</button>
         </div>
     );
 };
