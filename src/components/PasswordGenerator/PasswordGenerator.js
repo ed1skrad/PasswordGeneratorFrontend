@@ -5,6 +5,7 @@ import StarBackground from "../Background/StarBackground";
 import API_URL from "../../config/config";
 import ErrorPage from "../Error/ErrorPage";
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../Admin/useAuth';
 
 const PasswordGenerator = () => {
     const [difficulty, setDifficulty] = useState('EASY');
@@ -15,7 +16,11 @@ const PasswordGenerator = () => {
     const [showAlert, setShowAlert] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
 
+    if (!isAuthenticated ) {
+        return <ErrorPage errorMessage="You do not have permission to access this page." />;
+    }
     const handleLogout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('username'); // Удаляем имя пользователя из localStorage при выходе
@@ -68,6 +73,7 @@ const PasswordGenerator = () => {
         setShowAlert(false);
     };
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         if (!animationPlaying) {
             setTimeout(() => {
@@ -77,6 +83,7 @@ const PasswordGenerator = () => {
         }
     }, [animationPlaying]);
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         setTimeout(() => {
             setAnimationPlaying(true);

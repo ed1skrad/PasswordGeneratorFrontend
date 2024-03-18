@@ -3,13 +3,15 @@ import axios from 'axios';
 import '../../css/AdminPanel/adminPanel.css';
 import API_URL from "../../config/config";
 import { useNavigate } from 'react-router-dom';
-
+import useAuth from '../Admin/useAuth';
+import ErrorPage from "../Error/ErrorPage";
 const AdminPanel = () => {
     const [passwords, setPasswords] = useState([]);
     const [username, setUsername] = useState('');
     const [currentUsername, setCurrentUsername] = useState('');
     const [displayMode, setDisplayMode] = useState('all');
     const navigate = useNavigate();
+    const { isAuthenticated, isAuthorized } = useAuth('ROLE_ADMIN');
 
     useEffect(() => {
         const storedUsername = localStorage.getItem('username');
@@ -17,6 +19,10 @@ const AdminPanel = () => {
             setCurrentUsername(storedUsername);
         }
     }, []);
+
+    if (!isAuthenticated || !isAuthorized) {
+        return <ErrorPage errorMessage="You do not have permission to access this page." />;
+    }
 
     const handleGetAllPasswords = () => {
         axios.get(`${API_URL}/api/password/all`)

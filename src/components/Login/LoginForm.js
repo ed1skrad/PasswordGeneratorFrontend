@@ -17,13 +17,15 @@ const LoginForm = () => {
                 username,
                 password,
             });
-            localStorage.setItem('token', response.data.accessToken);
-            localStorage.setItem('username', response.data.username); // Store the username from the response
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('username', response.data.username);
+            localStorage.setItem('role', response.data.role); // Store the user's role in local storage
             navigate('/password');
         } catch (error) {
             console.error('Failed to login: ', error);
         }
     };
+
 
 
     return (
