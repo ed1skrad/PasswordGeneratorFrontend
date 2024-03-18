@@ -17,7 +17,7 @@ const RegistrationForm = () => {
                 password,
             });
             localStorage.setItem('token', response.data.token);
-            window.location.href = '/password'; // Перенаправление на страницу PasswordGenerator
+            window.location.href = '/password';
         } catch (error) {
             console.error('Failed to register: ', error);
         }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import '../../css/PasswordGenerator/passwordGenerator.css';
-import StarBackground from "../Background/StarBackground";
 import API_URL from "../../config/config";
 import ErrorPage from "../Error/ErrorPage";
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +11,6 @@ const PasswordGenerator = () => {
     const [length, setLength] = useState(8);
     const [password, setPassword] = useState('');
     const buttonRef = useRef(null);
-    const [animationPlaying, setAnimationPlaying] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -23,14 +21,13 @@ const PasswordGenerator = () => {
     }
     const handleLogout = () => {
         localStorage.removeItem('token');
-        localStorage.removeItem('username'); // Удаляем имя пользователя из localStorage при выходе
+        localStorage.removeItem('username');
         navigate('/login');
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setAnimationPlaying(false);
         buttonRef.current.style.animationPlayState = 'paused';
 
         try {
@@ -75,7 +72,6 @@ const PasswordGenerator = () => {
 
     return (
         <div className="password-generator">
-            <StarBackground/>
             <div className="user-container">
                 <span>Current User: {localStorage.getItem('username')}</span>
                 <button className="logout-button" onClick={handleLogout}>Logout</button>
