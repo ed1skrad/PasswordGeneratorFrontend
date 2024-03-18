@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../../css/LoginForm/loginForm.css';
 import API_URL from "../../config/config";
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
@@ -16,13 +17,14 @@ const LoginForm = () => {
                 username,
                 password,
             });
-            localStorage.setItem('token', response.data.token);
-            localStorage.setItem('username', response.data.username);
+            localStorage.setItem('token', response.data.accessToken);
+            localStorage.setItem('username', response.data.username); // Store the username from the response
             navigate('/password');
         } catch (error) {
             console.error('Failed to login: ', error);
         }
     };
+
 
     return (
         <div>

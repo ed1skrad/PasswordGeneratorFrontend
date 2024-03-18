@@ -14,21 +14,13 @@ const PasswordGenerator = () => {
     const [animationPlaying, setAnimationPlaying] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [error, setError] = useState(null);
-    const [username, setUsername] = useState('');
-
     const navigate = useNavigate();
 
     const handleLogout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('username'); // Удаляем имя пользователя из localStorage при выходе
         navigate('/login');
     };
-
-    useEffect(() => {
-        const storedUsername = localStorage.getItem('username');
-        if (storedUsername) {
-            setUsername(storedUsername);
-        }
-    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -99,10 +91,9 @@ const PasswordGenerator = () => {
         <div className="password-generator">
             <StarBackground/>
             <div className="user-container">
-                <span>Current User: {username}</span>
+                <span>Current User: {localStorage.getItem('username')}</span>
                 <button className="logout-button" onClick={handleLogout}>Logout</button>
             </div>
-            <button className="logout-button" onClick={handleLogout}>Logout</button>
             <form onSubmit={handleSubmit}>
                 <label>
                     Difficulty:
