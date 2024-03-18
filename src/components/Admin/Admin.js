@@ -76,7 +76,7 @@ const AdminPanel = () => {
     }
 
     const handleEdit = () =>{
-        
+
     }
 
     const deleteAll = () => {
