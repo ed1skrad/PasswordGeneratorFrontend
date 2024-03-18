@@ -69,23 +69,6 @@ const PasswordGenerator = () => {
         }, 2000)
     };
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-        if (!animationPlaying) {
-            setTimeout(() => {
-                buttonRef.current.style.animationPlayState = 'running';
-                setAnimationPlaying(true);
-            }, 30000);
-        }
-    }, [animationPlaying]);
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-        setTimeout(() => {
-            setAnimationPlaying(true);
-        }, 30000);
-    }, []);
-
     if (error) {
         return <ErrorPage errorMessage={error} />;
     }
