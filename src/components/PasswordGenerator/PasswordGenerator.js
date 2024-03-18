@@ -69,10 +69,6 @@ const PasswordGenerator = () => {
         }, 2000)
     };
 
-    const closeAlert = () => {
-        setShowAlert(false);
-    };
-
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         if (!animationPlaying) {
