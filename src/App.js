@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import * as Components from "./Components";
 import axios from "axios";
-
+import Navbar from "./Navbar";
 function App() {
     const [signIn, toggle] = useState(true);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -30,9 +32,21 @@ function App() {
         });
 
         console.log(response.data);
+        localStorage.setItem("token", response.data.token);
+        setUsername(response.data.username);
+        setIsAuthenticated(true);
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        setUsername("");
+        setIsAuthenticated(false);
     };
 
     return (
+        <Router>
+        <>
+            <Navbar username={username} onLogout={handleLogout} isAuthenticated={isAuthenticated} />
         <Components.Container>
             <Components.SignUpContainer signinIn={signIn}>
                 <Components.Form onSubmit={handleSignUp}>
@@ -103,6 +117,8 @@ function App() {
                 </Components.Overlay>
             </Components.OverlayContainer>
         </Components.Container>
+        </>
+        </Router>
     );
 }
 
