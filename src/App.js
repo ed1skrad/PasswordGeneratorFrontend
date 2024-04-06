@@ -148,6 +148,7 @@ function App() {
                         <button onClick={handleGeneratePassword} className="button_to_generate">
                             Генерация пароль
                         </button>
+
                     </div>
                 </>
             )}

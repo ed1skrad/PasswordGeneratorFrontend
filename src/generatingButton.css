@@ -48,3 +48,11 @@ form{
            max-width: 300px; /* Adjust the maximum width as needed */
            word-wrap: break-word;
        }
+.admin{
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}   .admin:hover{
+        color: #172d5e;
+    }
