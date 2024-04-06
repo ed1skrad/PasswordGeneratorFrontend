@@ -57,6 +57,7 @@ const Generate = ({ onReturnToAuth }) => {
                         <option value="HARD">HARD</option>
                     </select>
                 </label>
+                
                 <label>
                     Введите количество символов (до 255):
                     <input type="text" value={characterCount} onChange={handleCharacterCountChange} />

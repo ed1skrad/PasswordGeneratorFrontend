@@ -146,7 +146,7 @@ function App() {
                     </Components.Container>
                     <div className="container_to_but">
                         <button onClick={handleGeneratePassword} className="button_to_generate">
-                            Сгенерировать пароль
+                            Генерация пароль
                         </button>
                     </div>
                 </>
