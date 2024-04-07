@@ -1,0 +1,58 @@
+.container_to_but{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.button_to_generate{
+    background: linear-gradient(to right, #061641, #172d5e);
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-family: Montserrat;
+    font-weight: 500;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+} form label{
+    display: flex;
+    flex-direction: column;
+      margin-top: 20px;
+  }form label select{
+       margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #172d5e;
+    border-radius: 20px;
+   } form label input{
+              margin-top: 20px;
+              padding: 15px;
+              border: 1px solid #172d5e;
+              border-radius: 20px;
+          }
+
+     .exit{
+         position: fixed;
+         top: 20px;
+         left: 20px;
+         cursor: pointer;
+     } .exit:hover {
+                color: #172d5e;
+            }
+
+       .genereativeH1{
+           font-size: 16px;
+           max-width: 300px; /* Adjust the maximum width as needed */
+           word-wrap: break-word;
+       }
+.admin{
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}   .admin:hover{
+        color: #172d5e;
+    }
