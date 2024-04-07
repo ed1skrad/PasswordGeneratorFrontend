@@ -14,7 +14,7 @@ function App() {
     const [email, setEmail] = useState("");
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [redirect, setRedirect] = useState(false);
-
+    const [succesfull, setSuccef] = useState(true);
     const handleSignUp = async (e) => {
         e.preventDefault();
 
@@ -144,12 +144,14 @@ function App() {
                             </Components.Overlay>
                         </Components.OverlayContainer>
                     </Components.Container>
-                    <div className="container_to_but">
-                        <button onClick={handleGeneratePassword} className="button_to_generate">
-                            Генерация пароль
-                        </button>
+                    {isAuthenticated && (
+                        <div className="container_to_but">
+                            <button onClick={handleGeneratePassword} className="button_to_generate">
+                                Генерация пароль
+                            </button>
+                        </div>
+                    )}
 
-                    </div>
                 </>
             )}
         </Router>
