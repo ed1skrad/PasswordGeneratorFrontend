@@ -48,6 +48,11 @@ form{
            max-width: 300px; /* Adjust the maximum width as needed */
            word-wrap: break-word;
        }
+       .genereativeH2{
+           font-size: 16px;
+           max-width: 500px; /* Adjust the maximum width as needed */
+           word-wrap: break-word;
+       }
 .admin{
     position: fixed;
     right: 20px;
